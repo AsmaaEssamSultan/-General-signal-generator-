@@ -1,3 +1,8 @@
+%the program asks the user for the following parameters:
+%a. Sampling frequency of signal.  
+%b. Start and end of time scale  
+%c. Number of the break points and their positions
+
 Fs = input('Enter The Sampling frequency of signal: ');
 
 T1 = input('Enter The Start of time scale: ');
@@ -30,6 +35,12 @@ else
     Time_M = [T1 T2];
 end
     
+%According to the number of break points the program asks the user at each region to enter the specifications of the signal at this region Which are:  
+%a. DC signal: Amplitude. 
+%b. Ramp signal: slope – intercept.  
+%c. General order polynomial: Amplitude-power – intercept. 
+%d. Exponential signal: Amplitude – exponent.  
+%e. Sinusoidal signal: Amplitude – frequency – phase.
 
 Ttot = [];  %Matrix of Total Time
 Xtot = [];  %Matrix of Total function
@@ -69,10 +80,19 @@ for i = 0:1:n
     Ttot = [Ttot T];
     
 end
+%Display the resulting signal in time domain
 figure; plot(Ttot,Xtot);    
  
 
 %Optinal operation in the signal 
+%the program asks the user if he wants to perform any operation on the signal 
+%a. Amplitude Scaling: scale value.  
+%b. Time reversal.  
+%c. Time shift: shift value.  
+%d. Expanding the signal: expanding value 
+%e. Compressing the signal: compressing value 
+%f. None
+
 disp('Choose the operation you want to perform on the signal');
 disp('Enter: [A] for Amplitude Scaling');
 disp(       '[R] for Time reversal');
@@ -116,4 +136,5 @@ else
     disp('Enter one of the letter which shown above');
 end 
 
+%Display the new signal in time domain
 figure; plot(T,y);
